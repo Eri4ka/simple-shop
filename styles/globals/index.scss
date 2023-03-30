@@ -1,3 +1,5 @@
+@import '../variables/index.scss';
+
 /* Указываем box sizing, обнуляем отступы */
 * {
   margin: 0;
@@ -32,10 +34,8 @@ img {
 /* Выставляем основные настройки body и html */
 body {
   min-height: 100vh;
-
   color: black;
-
-  font-family: 'Styrene UI', sans-serif;
+  font-family: var(--font), sans-serif;
   line-height: 1.5;
   scroll-behavior: smooth;
   text-rendering: optimizespeed;
