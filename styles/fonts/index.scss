@@ -1,0 +1,33 @@
+@import '../mixins/index.scss';
+
+@include font(
+  'SF Pro Display',
+  normal,
+  400,
+  '../../public/fonts/SFProDisplay/SF-Pro-Display-Regular.otf',
+  'otf'
+);
+
+@include font(
+  'SF Pro Display',
+  normal,
+  500,
+  '../../public/fonts/SFProDisplay/SF-Pro-Display-Medium.otf',
+  'otf'
+);
+
+@include font(
+  'SF Pro Display',
+  normal,
+  600,
+  '../../public/fonts/SFProDisplay/SF-Pro-Display-Semibold.otf',
+  'otf'
+);
+
+@include font(
+  'SF Pro Display',
+  normal,
+  700,
+  '../../public/fonts/SFProDisplay/SF-Pro-Display-Bold.otf',
+  'otf'
+);
