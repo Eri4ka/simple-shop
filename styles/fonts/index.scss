@@ -3,6 +3,14 @@
 @include font(
   'SF Pro Display',
   normal,
+  300,
+  '../../public/fonts/SFProDisplay/SF-Pro-Display-Light.otf',
+  'otf'
+);
+
+@include font(
+  'SF Pro Display',
+  normal,
   400,
   '../../public/fonts/SFProDisplay/SF-Pro-Display-Regular.otf',
   'otf'

@@ -1,0 +1,72 @@
+@import '@styles/mixins/index.scss';
+@import '@styles/variables/media.scss';
+
+.root {
+}
+
+.top {
+  background-color: var(--header-top-bg-color);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.06);
+
+  &__wrapper {
+    max-width: 1200px;
+    width: calc(100vw - 20px);
+    margin: 0 auto;
+  }
+
+  &__content {
+    @include flex($align-items: center, $justify-content: space-between);
+    max-height: 110px;
+    gap: 1vw;
+    padding: 24px 0;
+  }
+}
+
+.logo {
+  max-width: 140px;
+  width: 100%;
+}
+
+.user {
+  display: flex;
+  column-gap: 3vw;
+  flex-shrink: 0;
+}
+
+.contacts {
+  display: flex;
+  color: var(--secondary-black-color);
+  font-size: 16px;
+  column-gap: 1vw;
+
+  &__text {
+    font-weight: 300;
+  }
+
+  &__phone {
+    font-weight: 400;
+  }
+}
+
+.bottom {
+  background: linear-gradient(90.12deg, #ffbec0 0.69%, #ff96bc 81.58%);
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.13);
+
+  &__wrapper {
+    max-width: 1200px;
+    width: calc(100vw - 20px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $tablet) {
+  .contacts {
+    display: none;
+  }
+}
+
+@media (max-width: $tablet-medium) {
+  .logo {
+    display: none;
+  }
+}
