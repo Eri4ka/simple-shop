@@ -1,0 +1,69 @@
+@import '@styles/mixins/index.scss';
+@import '@styles/variables/media.scss';
+
+.root {
+  position: relative;
+  color: rgba(51, 51, 51, 0.75);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  max-height: 69px;
+  min-height: 30px;
+  height: 6vw;
+}
+
+.list {
+  display: flex;
+  height: 100%;
+}
+
+.item {
+  @include flex($justify-content: center, $align-items: center);
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.09);
+  }
+}
+
+.toggle {
+  display: none;
+  width: 20px;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  &_active .toggle__elem {
+    &:first-child {
+      transform: rotate(45deg) translate(5px, 3px);
+    }
+
+    &:last-child {
+      transform: rotate(-45deg) translate(6px, -4px);
+    }
+  }
+
+  &__elem {
+    width: 100%;
+    height: 2px;
+    transition: transform 0.3s, background-color 0.3s;
+    background-color: var(--secondary-black-color);
+  }
+}
+
+@media (max-width: $tablet-medium) {
+  .list {
+    display: none;
+  }
+
+  .toggle {
+    @include flex($justify-content: space-between, $flex-direction: column);
+  }
+}
