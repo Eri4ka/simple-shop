@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import useSWR from 'swr';
 import cl from 'classnames';
+
+import { CATEGORIES_URL } from '@constants/index';
 
 import styles from './Catalog.module.scss';
 
 export const Catalog = () => {
   // Vars
   const [openSideBar, setOpenSideBar] = useState(false);
+  const { data } = useSWR(CATEGORIES_URL);
 
   // Handlers
   const toggleSiderBarHandler = () => {
