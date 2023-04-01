@@ -16,7 +16,7 @@ export const Header = () => {
         <div className={styles.top__wrapper}>
           <div className={styles.top__content}>
             <div className={styles.logo}>
-              <Image src={Logo} alt='logo' />
+              <Image src={Logo} alt='logo' priority />
             </div>
             <Search />
             <div className={styles.user}>
