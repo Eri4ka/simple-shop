@@ -4,6 +4,8 @@ import cl from 'classnames';
 
 import { CATEGORIES_URL } from '@constants/index';
 
+import { DropDown } from './components/DropDown';
+import { SideBar } from './components/SideBar';
 import styles from './Catalog.module.scss';
 
 export const Catalog = () => {
@@ -19,7 +21,9 @@ export const Catalog = () => {
   return (
     <nav className={styles.root}>
       <ul className={styles.list}>
-        <li className={styles.item}>Каталог</li>
+        <DropDown items={data}>
+          <li className={styles.item}>Каталог</li>
+        </DropDown>
         <li className={styles.item}>Популярное</li>
         <li className={styles.item}>Бренды</li>
         <li className={styles.item}>Акции</li>
@@ -35,6 +39,7 @@ export const Catalog = () => {
         <div className={styles.toggle__elem}></div>
         <div className={styles.toggle__elem}></div>
       </div>
+      <SideBar isActive={openSideBar} items={data} />
     </nav>
   );
 };

@@ -10,7 +10,7 @@
 
   &__wrapper {
     max-width: 1200px;
-    width: calc(100vw - 20px);
+    width: calc(100vw - var(--screen-margin));
     margin: 0 auto;
   }
 
@@ -54,7 +54,7 @@
 
   &__wrapper {
     max-width: 1200px;
-    width: calc(100vw - 20px);
+    width: calc(100vw - var(--screen-margin));
     margin: 0 auto;
   }
 }
