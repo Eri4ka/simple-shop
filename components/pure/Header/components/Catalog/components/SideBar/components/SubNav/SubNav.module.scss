@@ -1,0 +1,44 @@
+.button {
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: url('../../../../../../../../../public/icons/header/sidebar/arrow.svg')
+      no-repeat;
+    height: 19px;
+    width: 19px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  &_active::after {
+    transform: translateY(-50%) rotate(-90deg);
+  }
+}
+
+.menu {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease-in-out;
+
+  &__item {
+    color: rgba(51, 51, 51, 0.75);
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 15px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+  }
+
+  &_active {
+    max-height: 100vh;
+  }
+}
