@@ -1,0 +1,59 @@
+@import '@styles/variables/media.scss';
+
+.slide {
+  position: relative;
+  background: linear-gradient(89.85deg, #f4f4f4 -1.06%, #e4e4e4 105.44%);
+  border-radius: 85px;
+  max-height: 443px;
+  height: 43vh;
+
+  &__img {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    max-width: 488px;
+    width: calc(100% - 20px);
+    height: 100%;
+  }
+}
+
+.text {
+  position: absolute;
+  color: var(--secondary-black-color);
+  opacity: 0.75;
+  z-index: 1;
+
+  &__promo {
+    top: 10%;
+    left: 5%;
+    font-weight: 400;
+    font-size: calc(80px + 58 * (100vw / 1440));
+  }
+
+  &__additional {
+    top: 60%;
+    left: 15%;
+    font-weight: 700;
+    font-size: calc(30px + 16 * (100vw / 1440));
+  }
+}
+
+@media (min-width: $desktop) {
+  .text {
+    &__promo {
+      font-size: 138px;
+    }
+
+    &__additional {
+      font-size: 46px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .slide {
+    &__img {
+      display: none;
+    }
+  }
+}
