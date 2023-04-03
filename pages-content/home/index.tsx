@@ -1,6 +1,13 @@
-import { Header } from '@components/pure/Header';
 import { FC } from 'react';
 
+import { Slider } from '@components/pure/Slider';
+
+import styles from './Home.module.scss';
+
 export const HomePageContent: FC = () => {
-  return <Header />;
+  return (
+    <section className={styles.root}>
+      <Slider />
+    </section>
+  );
 };

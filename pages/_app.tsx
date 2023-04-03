@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
 
 import { request } from '@shared/api';
+import { Layout } from '@pages-content/Layout';
 import '@styles/index.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -11,7 +12,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         fetcher: (resource) => request(resource),
       }}
     >
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </SWRConfig>
   );
 };

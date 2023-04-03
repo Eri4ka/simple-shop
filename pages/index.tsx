@@ -1,5 +1,6 @@
-import { HomePageContent } from '@pages-content/home';
 import type { NextPage } from 'next';
+
+import { HomePageContent } from '@pages-content/Home';
 
 const HomePage: NextPage = () => {
   return <HomePageContent />;
