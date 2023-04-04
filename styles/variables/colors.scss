@@ -5,8 +5,13 @@
   --secondary-black-color: #333333;
   --secondary-grey-color: #b6b6b6;
   --primary-pink-color: #f5b0b8;
+  --secondary-pink-color: #ffb4ea;
+  --primary-white-color: #ffffff;
+  --primary-blue-color: #57d6e7;
+  --primary-red-color: #ef4b4d;
   --header-dropdown-color: var(--primary-pink-color);
   --header-sidebar-color: var(--primary-pink-color);
   --slider-dots-bg-color: #c4c4c4;
-  --slider-dots-active-bg-color: #ffffff;
+  --slider-dots-active-bg-color: var(--primary-white-color);
+  --card-bg-color: var(--primary-white-color);
 }
