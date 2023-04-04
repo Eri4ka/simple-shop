@@ -17,7 +17,13 @@ export const Slide: FC<Props> = ({ textPromo, textAdd, image }) => {
       <span className={cl(styles.text, styles.text__additional)}>
         {textAdd}
       </span>
-      <Image className={styles.slide__img} src={image} alt='slide-picture' />
+      <Image
+        className={styles.slide__img}
+        src={image}
+        alt='slide'
+        height={431}
+        priority
+      />
     </div>
   );
 };

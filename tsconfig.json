@@ -25,7 +25,8 @@
       "@public/*": ["public/*"],
       "@images/*": ["public/images/*"],
       "@icons/*": ["public/icons/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@mytypes/*": ["types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
