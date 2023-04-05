@@ -1,0 +1,76 @@
+@import '@styles/variables/media.scss';
+@import '@styles/mixins/index.scss';
+
+.root {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url('../../../public/images/footer/bg.png') no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto;
+  padding-top: 150px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  align-items: baseline;
+  gap: 20px;
+}
+
+.info {
+  color: var(--light-black-color);
+
+  &__logo {
+    margin-bottom: 44px;
+  }
+
+  &__adress {
+    margin-bottom: 30px;
+  }
+
+  &__heading {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 18px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
+.section {
+  @include flex($flex-direction: column, $flex-wrap: wrap);
+  max-height: 200px;
+
+  &__text {
+    color: rgba(42, 42, 42, 0.71);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .section {
+    max-height: none;
+  }
+}
