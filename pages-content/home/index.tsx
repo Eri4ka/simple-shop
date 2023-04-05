@@ -7,6 +7,7 @@ import { Slider } from '@components/pure/Slider';
 import { CardBlock } from '@components/specific/CardBlock';
 import { PromoWideCard } from '@components/pure/PromoWideCard';
 import { PromoCard } from '@components/pure/PromoCard';
+import { AboutUs } from '@components/specific/AboutUs';
 import { PRODUCTS_URL } from '@constants/index';
 import { ProductsResType } from '@mytypes/index';
 
@@ -57,6 +58,7 @@ export const HomePageContent: FC = () => {
           />
         }
       />
+      <AboutUs />
     </section>
   );
 };

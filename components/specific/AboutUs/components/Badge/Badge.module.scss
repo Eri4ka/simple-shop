@@ -1,0 +1,39 @@
+@import '@styles/mixins/index.scss';
+@import '@styles/variables/media.scss';
+
+.root {
+  @include flex($align-items: center);
+  gap: 40px;
+  flex-basis: min-content;
+}
+
+.icon {
+  @include flex($justify-content: center, $align-items: center);
+  background-color: var(--primar-grey-color);
+  border-radius: 20px;
+  height: 123px;
+  width: 123px;
+  flex-shrink: 0;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  color: var(--secondary-black-color);
+}
+
+@media (max-width: $mobile) {
+  .root {
+    gap: 25px;
+  }
+
+  .icon {
+    height: 100px;
+    width: 100px;
+  }
+
+  .text {
+    font-size: 24px;
+  }
+}
