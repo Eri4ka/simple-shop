@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { FC, useState } from 'react';
 
 import styles from './DropDown.module.scss';
@@ -32,7 +34,7 @@ export const DropDown: FC<Props> = ({ children, items }) => {
           <ul className={styles.menu__list}>
             {items?.map((item, idx) => (
               <li key={idx} className={styles.menu__item}>
-                {item}
+                <Link href={`/${item}`}>{item}</Link>
               </li>
             ))}
           </ul>

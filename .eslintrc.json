@@ -3,7 +3,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "next"
   ],
   "rules": {
     "@typescript-eslint/no-empty-interface": [
@@ -13,10 +14,10 @@
       }
     ],
     "@typescript-eslint/ban-ts-comment": "off",
-    "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-non-null-assertion": "off"
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "testing-library", "jest-dom"],
+
+  "plugins": ["@typescript-eslint", "prettier"],
   "root": true
 }

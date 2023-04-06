@@ -15,3 +15,7 @@ export type ProductType = {
   price: number;
   title: string;
 };
+
+export type CategoryType = string[];
+
+export type FilterType = { value: string; total: number | undefined };

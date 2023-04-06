@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FC, useState } from 'react';
 import cl from 'classnames';
 
@@ -25,7 +26,7 @@ export const SubNav: FC<Props> = ({ children, items }) => {
       <ul className={cl(styles.menu, isOpen && styles.menu_active)}>
         {items?.map((item, idx) => (
           <li key={idx} className={styles.menu__item}>
-            {item}
+            <Link href={`/${item}`}>{item}</Link>
           </li>
         ))}
       </ul>
