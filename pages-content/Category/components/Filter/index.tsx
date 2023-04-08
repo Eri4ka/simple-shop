@@ -17,12 +17,11 @@ export const Filter: FC<Props> = ({ category }) => {
     `${PRODUCTS_CATEGORY_URL}${category}`
   );
   const [brands, setBrands] = useState<FilterType[]>([]);
-
   const filters = [{ id: 1, name: 'brand', heading: 'Брэнд', values: brands }];
 
   // Effects
   useEffect(() => {
-    const buildFilterValues = (field: keyof ProductType) => {
+    const buildFilterFromData = (field: keyof ProductType) => {
       const getFilterFields = () => {
         const fields = data?.products.map((item) => {
           return item[field] as string;
@@ -43,7 +42,7 @@ export const Filter: FC<Props> = ({ category }) => {
 
       return filterValues;
     };
-    setBrands(buildFilterValues('brand'));
+    setBrands(buildFilterFromData('brand'));
   }, [data?.products]);
 
   return (

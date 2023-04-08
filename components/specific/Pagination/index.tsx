@@ -4,37 +4,37 @@ import cl from 'classnames';
 import styles from './Pagination.module.scss';
 
 type Props = {
-  totalProducts?: number;
+  productsTotal?: number;
   productsOnPage: number;
-  onClick: (page: number) => void;
+  onPageClick: (page: number) => void;
 };
 
 export const Pagination: FC<Props> = ({
-  totalProducts,
+  productsTotal,
   productsOnPage,
-  onClick,
+  onPageClick,
 }) => {
   // Vars
   const [activePage, setActivePage] = useState(1);
-  const pagesCount = totalProducts
-    ? Math.ceil(totalProducts / productsOnPage)
+  const pagesCount = productsTotal
+    ? Math.ceil(productsTotal / productsOnPage)
     : 1;
   const pages = Array.from(Array(pagesCount).keys());
 
   // Handlers
   const clickOnPageHandler = (currentPage: number) => {
     setActivePage(currentPage);
-    onClick(currentPage - 1);
+    onPageClick(currentPage - 1);
   };
 
   const clickOnPrevPageHandler = () => {
     setActivePage((current) => current - 1);
-    onClick(activePage - 2);
+    onPageClick(activePage - 2);
   };
 
   const clickOnNextPageHandler = () => {
     setActivePage((current) => current + 1);
-    onClick(activePage);
+    onPageClick(activePage);
   };
 
   return (

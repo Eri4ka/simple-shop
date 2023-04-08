@@ -1,13 +1,15 @@
-import { Card } from '@components/pure/Card';
-import styles from './Products.module.scss';
+import { FC, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { PRODUCTS_CATEGORY_URL } from '@constants/index';
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { ProductsResType, ProductType } from '@mytypes/index';
+
 import { Pagination } from '@components/specific/Pagination';
 import { Loader } from '@components/pure/Loader';
-import { PRODUCTS_ON_PAGE } from '@pages-content/Category/constants';
-import { useRouter } from 'next/router';
+import { Card } from '@components/pure/Card';
+import { PRODUCTS_CATEGORY_URL } from '@constants/index';
+import { ProductsResType, ProductType } from '@mytypes/index';
+
+import { PRODUCTS_ON_PAGE } from '../../constants';
+import styles from './Products.module.scss';
 
 type Props = {
   data?: ProductsResType;
@@ -15,41 +17,42 @@ type Props = {
 };
 
 export const Products: FC<Props> = ({ data, category }) => {
+  // Vars
   const [skip, setSkip] = useState(0);
   const { data: products, isLoading } = useSWR<ProductsResType>(
-    `${PRODUCTS_CATEGORY_URL}${category}?limit=12&skip=${skip}`,
+    `${PRODUCTS_CATEGORY_URL}${category}?limit=${PRODUCTS_ON_PAGE}&skip=${skip}`,
     { fallbackData: data }
   );
-  const {
-    query: { category: alias, ...params },
-  } = useRouter();
   const [filteredProducts, setFilteredProducts] = useState<
     ProductType[] | undefined
   >(products?.products);
+  const { query } = useRouter();
+
+  // Handlers
   const changeSkipHandler = (page: number) => setSkip(page * PRODUCTS_ON_PAGE);
 
-  const changeFilterHandler = useMemo(() => {
-    const filterParams = params.brand as string;
-    const arrayOfFilterParams = filterParams?.split(', ');
-    const filteredData: ProductType[] = [];
-
-    if (arrayOfFilterParams) {
-      arrayOfFilterParams.forEach((param) => {
-        products?.products.forEach((product) => {
-          if (param === product.brand) {
-            filteredData.push(product);
-          }
-        });
-      });
-
-      return filteredData;
-    }
-    return products?.products;
-  }, [params.brand, products]);
-
+  // Effects
   useEffect(() => {
-    setFilteredProducts(changeFilterHandler);
-  }, [changeFilterHandler]);
+    const getFilteredProducts = () => {
+      const filterParams = query['brand'] as string;
+      const arrayOfFilterParams = filterParams?.split(', ');
+      const filteredData: ProductType[] = [];
+
+      if (arrayOfFilterParams) {
+        arrayOfFilterParams.forEach((param) => {
+          products?.products.forEach((product) => {
+            if (param === product['brand']) {
+              filteredData.push(product);
+            }
+          });
+        });
+
+        return filteredData;
+      }
+      return products?.products;
+    };
+    setFilteredProducts(getFilteredProducts);
+  }, [products?.products, query]);
 
   return (
     <article className={styles.root}>
@@ -66,9 +69,9 @@ export const Products: FC<Props> = ({ data, category }) => {
       </div>
       <div className={styles.pagination}>
         <Pagination
-          totalProducts={products?.total}
+          productsTotal={products?.total}
           productsOnPage={PRODUCTS_ON_PAGE}
-          onClick={changeSkipHandler}
+          onPageClick={changeSkipHandler}
         />
       </div>
     </article>
