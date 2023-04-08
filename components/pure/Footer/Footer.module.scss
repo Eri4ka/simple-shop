@@ -3,6 +3,7 @@
 
 .root {
   position: relative;
+  min-height: 700px;
 
   &::after {
     content: '';

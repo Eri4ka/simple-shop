@@ -23,6 +23,7 @@ export const Card: FC<Props> = ({ card }) => {
           alt={title}
           fill
           sizes='285px'
+          priority
           style={{ objectFit: 'contain' }}
         />
       </div>

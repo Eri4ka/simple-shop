@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  flex-basis: 240px;
+  max-width: 240px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: var(--primary-black-color);
+    opacity: 0.09;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+  }
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: var(--secondary-black-color);
+}
