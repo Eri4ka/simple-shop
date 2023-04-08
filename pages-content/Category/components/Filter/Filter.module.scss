@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   flex-basis: 240px;
+  max-width: 240px;
 
   &::after {
     content: '';

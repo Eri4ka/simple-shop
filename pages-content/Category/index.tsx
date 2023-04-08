@@ -12,9 +12,6 @@ type Props = {
 };
 
 const Category: FC<Props> = ({ data, category }) => {
-  // console.log(data);
-
-  // console.log(le);
   return (
     <section className={styles.root}>
       <div className={styles.head}>
@@ -23,7 +20,7 @@ const Category: FC<Props> = ({ data, category }) => {
       <div className={styles.content}>
         <div className={styles.content__wrapper}>
           <Filter category={category} />
-          <Products category={category} data={data} />
+          <Products data={data} category={category} />
         </div>
       </div>
     </section>

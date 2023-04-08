@@ -18,7 +18,7 @@ export const Filter: FC<Props> = ({ category }) => {
   );
   const [brands, setBrands] = useState<FilterType[]>([]);
 
-  const filters = [{ id: 1, name: 'Брэнд', values: brands }];
+  const filters = [{ id: 1, name: 'brand', heading: 'Брэнд', values: brands }];
 
   // Effects
   useEffect(() => {
@@ -50,8 +50,8 @@ export const Filter: FC<Props> = ({ category }) => {
     <aside className={styles.wrapper}>
       <h2 className={styles.heading}>Фильтр</h2>
       <div className={styles.content}>
-        {filters.map(({ id, name, values }) => (
-          <Section key={id} type={name} values={values} />
+        {filters.map(({ id, name, heading, values }) => (
+          <Section key={id} name={name} heading={heading} values={values} />
         ))}
       </div>
     </aside>
