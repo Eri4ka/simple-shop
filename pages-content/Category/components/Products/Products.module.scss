@@ -5,11 +5,16 @@
 }
 
 .heading {
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 48px;
-  color: var(--secondary-black-color);
+  @include flex($flex-wrap: wrap);
+  gap: 30px;
   margin-bottom: 30px;
+
+  &__text {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--secondary-black-color);
+  }
 }
 
 .grid {

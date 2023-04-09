@@ -3,30 +3,43 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import { Pagination } from '@components/specific/Pagination';
-import { Loader } from '@components/pure/Loader';
-import { Card } from '@components/pure/Card';
+import { BreadCrumbs } from '@components/pure/BreadCrumbs';
 import { PRODUCTS_CATEGORY_URL } from '@constants/index';
 import { ProductsResType, ProductType } from '@mytypes/index';
 
+import { Sorting } from './components/Sorting';
+import { SortItemType } from './types';
 import { PRODUCTS_ON_PAGE } from '../../constants';
+import { List } from './components/List';
 import styles from './Products.module.scss';
-import { BreadCrumbs } from '@components/pure/BreadCrumbs';
 
 type Props = {
   data?: ProductsResType;
   category: string;
 };
 
+const sortList: SortItemType[] = [
+  { name: 'По умолчанию', type: 'default' },
+  { name: 'По возрастанию цены', type: 'increase_price' },
+  { name: 'По убыванию цены', type: 'decrease_price' },
+];
+
+const initialSort = sortList[0];
+
 export const Products: FC<Props> = ({ data, category }) => {
   // Vars
   const [skip, setSkip] = useState(0);
-  const { data: products, isLoading } = useSWR<ProductsResType>(
+  const { data: initialProducts, isLoading } = useSWR<ProductsResType>(
     `${PRODUCTS_CATEGORY_URL}${category}?limit=${PRODUCTS_ON_PAGE}&skip=${skip}`,
     { fallbackData: data }
   );
   const [filteredProducts, setFilteredProducts] = useState<
     ProductType[] | undefined
-  >(products?.products);
+  >(initialProducts?.products);
+  const [products, setProducts] = useState<ProductType[] | undefined>(
+    filteredProducts
+  );
+  const [activeSort, setActiveSort] = useState(initialSort);
   const { query } = useRouter();
 
   // Handlers
@@ -41,7 +54,7 @@ export const Products: FC<Props> = ({ data, category }) => {
 
       if (arrayOfFilterParams) {
         arrayOfFilterParams.forEach((param) => {
-          products?.products.forEach((product) => {
+          initialProducts?.products.forEach((product) => {
             if (param === product['brand']) {
               filteredData.push(product);
             }
@@ -50,28 +63,44 @@ export const Products: FC<Props> = ({ data, category }) => {
 
         return filteredData;
       }
-      return products?.products;
+      return initialProducts?.products;
     };
-    setFilteredProducts(getFilteredProducts);
-  }, [products?.products, query]);
+    setFilteredProducts(getFilteredProducts());
+  }, [initialProducts?.products, query]);
+
+  useEffect(() => {
+    const getSortedProducts = () => {
+      if (filteredProducts) {
+        const copyProducts = [...filteredProducts];
+
+        switch (activeSort.type) {
+          case 'increase_price':
+            return copyProducts.sort((a, b) => +a.price - +b.price);
+          case 'decrease_price':
+            return copyProducts.sort((a, b) => +b.price - +a.price);
+          default:
+            return copyProducts;
+        }
+      }
+    };
+    setProducts(getSortedProducts());
+  }, [activeSort.type, filteredProducts]);
 
   return (
     <article className={styles.root}>
-      <h2 className={styles.heading}>Товары</h2>
-      <BreadCrumbs />
-      <div className={styles.grid}>
-        {filteredProducts?.map((card) => (
-          <Card key={card.id} card={card} />
-        ))}
-        {isLoading && (
-          <div className={styles.grid__loader}>
-            <Loader />
-          </div>
-        )}
+      <div className={styles.heading}>
+        <h2 className={styles.heading__text}>Товары</h2>
+        <Sorting
+          sortList={sortList}
+          activeSort={activeSort}
+          setActiveSort={setActiveSort}
+        />
       </div>
+      <BreadCrumbs />
+      <List products={products} isLoading={isLoading} />
       <div className={styles.pagination}>
         <Pagination
-          productsTotal={products?.total}
+          productsTotal={initialProducts?.total}
           productsOnPage={PRODUCTS_ON_PAGE}
           onPageClick={changeSkipHandler}
         />

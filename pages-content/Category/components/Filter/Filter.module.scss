@@ -1,3 +1,5 @@
+@import '@styles/mixins/index.scss';
+
 .wrapper {
   position: relative;
   flex-basis: 240px;
@@ -20,4 +22,10 @@
   font-size: 40px;
   line-height: 48px;
   color: var(--secondary-black-color);
+  margin-bottom: 30px;
+}
+
+.content {
+  @include flex($flex-direction: column, $flex-wrap: wrap);
+  gap: 20px;
 }

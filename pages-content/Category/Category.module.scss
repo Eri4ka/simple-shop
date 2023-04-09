@@ -1,6 +1,7 @@
 @import '@styles/mixins/index.scss';
 
 .root {
+  padding-bottom: 50px;
 }
 
 .head {
@@ -26,7 +27,7 @@
   padding-top: 50px;
 
   &__wrapper {
-    display: flex;
+    @include flex($flex-wrap: wrap);
     gap: 65px;
   }
 }
