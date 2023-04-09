@@ -10,6 +10,7 @@ import { ProductsResType, ProductType } from '@mytypes/index';
 
 import { PRODUCTS_ON_PAGE } from '../../constants';
 import styles from './Products.module.scss';
+import { BreadCrumbs } from '@components/pure/BreadCrumbs';
 
 type Props = {
   data?: ProductsResType;
@@ -57,6 +58,7 @@ export const Products: FC<Props> = ({ data, category }) => {
   return (
     <article className={styles.root}>
       <h2 className={styles.heading}>Товары</h2>
+      <BreadCrumbs />
       <div className={styles.grid}>
         {filteredProducts?.map((card) => (
           <Card key={card.id} card={card} />
