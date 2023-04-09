@@ -17,7 +17,7 @@ export const Checkbox: FC<Props> = ({
   ...props
 }) => {
   // Vars
-  const checked = activeValues.includes(label);
+  const isChecked = activeValues.includes(label);
 
   return (
     <div className={styles.root}>
@@ -25,7 +25,7 @@ export const Checkbox: FC<Props> = ({
         id={label}
         className={styles.checkbox}
         type='checkbox'
-        checked={checked}
+        checked={isChecked}
         onChange={(e) => onChange(e, label)}
         {...props}
       />
