@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cl from 'classnames';
@@ -7,30 +7,41 @@ import { clearURLQueries } from '@shared/helpers';
 
 import styles from './BreadCrumbs.module.scss';
 
-export const BreadCrumbs = () => {
+type CrumbType = { name: string; path: string };
+
+type Props = {
+  lastCrumb?: string;
+};
+
+export const BreadCrumbs: FC<Props> = ({ lastCrumb }) => {
   // Vars
   const { asPath } = useRouter();
+
   const pathWithoutQueries = clearURLQueries(asPath);
-  const [breadCrumbs, setBreadCrumbs] = useState<
-    { name: string; path: string }[]
-  >([]);
+  const [breadCrumbs, setBreadCrumbs] = useState<CrumbType[]>([]);
 
   // Effects
   useEffect(() => {
     const buildBreadCrumbs = () => {
       const paths = pathWithoutQueries.split('/');
+      const breadCrumbs: CrumbType[] = [];
 
-      const breadCrumbs = paths.map((item) => {
-        if (item === '') {
-          return { name: 'Главная', path: '/' };
+      paths.forEach((item, idx, current) => {
+        if (idx === 0) {
+          breadCrumbs.push({ name: 'Главная', path: `/` });
+        } else {
+          const prevPath = idx !== 1 ? breadCrumbs[idx - 1].path : '';
+          const isLastPath = current.length === idx + 1;
+          const name = isLastPath && lastCrumb ? lastCrumb : item;
+
+          breadCrumbs.push({ name, path: `${prevPath}/${item}` });
         }
-        return { name: item, path: `/${item}` };
       });
 
       return breadCrumbs;
     };
     setBreadCrumbs(buildBreadCrumbs());
-  }, [pathWithoutQueries]);
+  }, [pathWithoutQueries, lastCrumb]);
 
   return (
     <div className={styles.root}>
