@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
 
 import CartIc from '@icons/card/cart.svg';
@@ -12,11 +13,12 @@ type Props = {
 
 export const Card: FC<Props> = ({ card }) => {
   // Vars
-  const { brand, category, title, price, discountPercentage, images } = card;
+  const { id, brand, category, title, price, discountPercentage, images } =
+    card;
   const discount = Math.floor(price - (price * discountPercentage) / 100);
 
   return (
-    <div className={styles.root}>
+    <Link href={`/${category}/${id}`} className={styles.root}>
       <div className={styles.image}>
         <Image
           src={images[0]}
@@ -30,7 +32,7 @@ export const Card: FC<Props> = ({ card }) => {
       <span className={styles.brand}>{brand}</span>
       <span className={styles.category}>{category}</span>
       <span className={styles.title}>{title}</span>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={() => console.log('sd')}>
         <div className={styles.button__content}>
           <span className={styles.button__price}>
             {discount ? discount : price} $
@@ -41,6 +43,6 @@ export const Card: FC<Props> = ({ card }) => {
         </div>
         <div className={styles.button__icon}>{<CartIc alt='cart' />}</div>
       </button>
-    </div>
+    </Link>
   );
 };
