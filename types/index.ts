@@ -14,6 +14,7 @@ export type ProductType = {
   images: StaticImageData[];
   price: number;
   title: string;
+  rating: number;
 };
 
 export type CategoryType = string[];

@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import CartIc from '@icons/card/cart.svg';
 import { ProductType } from '@mytypes/index';
+import { getDiscount } from '@shared/helpers';
 
 import styles from './Card.module.scss';
 
@@ -15,7 +16,7 @@ export const Card: FC<Props> = ({ card }) => {
   // Vars
   const { id, brand, category, title, price, discountPercentage, images } =
     card;
-  const discount = Math.floor(price - (price * discountPercentage) / 100);
+  const discount = getDiscount(price, discountPercentage);
 
   return (
     <Link href={`/${category}/${id}`} className={styles.root}>

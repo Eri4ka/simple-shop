@@ -1,7 +1,7 @@
 import type { NextPage, GetServerSideProps } from 'next';
 
-import { PRODUCTS_URL } from '@constants/index';
-import { ProductType } from '@mytypes/index';
+import { PRODUCTS_CATEGORY_URL, PRODUCTS_URL } from '@constants/index';
+import { ProductType, ProductsResType } from '@mytypes/index';
 import { request } from '@shared/api';
 import { Product } from '@pages-content/Product';
 
@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps<{
   const { id } = query;
 
   try {
-    const data = await request(`${PRODUCTS_URL}${id}`);
+    const data: ProductType = await request(`${PRODUCTS_URL}${id}`);
 
     if (!data) {
       return {
@@ -19,7 +19,12 @@ export const getServerSideProps: GetServerSideProps<{
       };
     }
 
-    return { props: { data } };
+    const { products }: ProductsResType = await request(
+      `${PRODUCTS_CATEGORY_URL}${data.category}`
+    );
+    const related = products.filter((product) => product.id !== data.id);
+
+    return { props: { data, related } };
   } catch {
     return {
       notFound: true,
@@ -27,8 +32,13 @@ export const getServerSideProps: GetServerSideProps<{
   }
 };
 
-const ProductPage: NextPage<{ data: ProductType }> = ({ data }) => {
-  return <Product product={data} />;
+type Props = {
+  data: ProductType;
+  related: ProductType[];
+};
+
+const ProductPage: NextPage<Props> = ({ data, related }) => {
+  return <Product product={data} related={related} />;
 };
 
 export default ProductPage;
