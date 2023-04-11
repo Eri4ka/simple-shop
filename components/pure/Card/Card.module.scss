@@ -1,7 +1,11 @@
 @import '@styles/mixins/index.scss';
 
 .root {
-  @include flex($align-items: center, $flex-direction: column);
+  @include flex(
+    $align-items: center,
+    $flex-direction: column,
+    $justify-content: space-between
+  );
   background-color: var(--card-bg-color);
   max-width: 285px;
   width: 100%;
@@ -40,6 +44,7 @@
   color: var(--primary-black-color);
   text-transform: uppercase;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .button {
@@ -48,7 +53,7 @@
   border: 1px solid rgba(191, 191, 191, 0.3);
   border-radius: 20.5px;
   padding: 7px 7px;
-  max-height: 41px;
+  height: 41px;
   max-width: 153px;
   width: 100%;
 
@@ -63,6 +68,10 @@
     line-height: 24px;
     color: var(--primary-blue-color);
     white-space: nowrap;
+
+    &_cart {
+      color: var(--primary-white-color);
+    }
   }
 
   &__discount {
@@ -90,5 +99,9 @@
   &__icon {
     display: flex;
     flex-grow: 1;
+  }
+
+  &_cart {
+    background-color: var(--button-cart-color);
   }
 }
