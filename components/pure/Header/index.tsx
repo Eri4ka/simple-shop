@@ -8,6 +8,7 @@ import { UserAccount } from './components/UserAccount';
 import { Catalog } from './components/Catalog';
 
 import styles from './Header.module.scss';
+import Link from 'next/link';
 
 export const Header = () => {
   return (
@@ -15,9 +16,11 @@ export const Header = () => {
       <div className={styles.top}>
         <div className={styles.top__wrapper}>
           <div className={styles.top__content}>
-            <div className={styles.logo}>
-              <Image src={Logo} alt='logo' priority />
-            </div>
+            <Link href='/'>
+              <div className={styles.logo}>
+                <Image src={Logo} alt='logo' priority />
+              </div>
+            </Link>
             <Search />
             <div className={styles.user}>
               <UserAccount />
