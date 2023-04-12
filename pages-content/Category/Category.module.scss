@@ -1,0 +1,33 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  padding-bottom: 50px;
+}
+
+.head {
+  @include flex($align-items: center, $justify-content: center);
+  max-height: 180px;
+  height: 17vh;
+  background: linear-gradient(89.85deg, #f4f4f4 -1.06%, #e4e4e4 105.44%);
+
+  &__text {
+    text-transform: uppercase;
+    color: var(--secondary-black-color);
+    opacity: 0.75;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 56px;
+  }
+}
+
+.content {
+  max-width: 1200px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto;
+  padding-top: 50px;
+
+  &__wrapper {
+    @include flex($flex-wrap: wrap);
+    gap: 65px;
+  }
+}

@@ -1,0 +1,39 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  max-width: 1200px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto 100px auto;
+  padding-top: 16px;
+}
+
+.heading {
+  @include flex($align-items: center);
+
+  &__text {
+    position: relative;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--secondary-black-color);
+    overflow: hidden;
+  }
+
+  &__separator {
+    background: linear-gradient(
+      90deg,
+      #e8e8e8 23.39%,
+      rgba(196, 196, 196, 0) 96.01%
+    );
+    height: 3px;
+    flex-grow: 1;
+    margin-left: 27px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  justify-items: center;
+}

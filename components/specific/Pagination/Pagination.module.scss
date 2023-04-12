@@ -1,0 +1,30 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  display: flex;
+}
+
+.list {
+  @include flex($align-items: flex-end);
+  margin: 0 3px;
+
+  &__page {
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    width: 22px;
+    text-align: center;
+    cursor: pointer;
+
+    &_active {
+      color: #fe73a4;
+      font-size: 29px;
+      line-height: 34px;
+    }
+  }
+}
+
+.button {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+}

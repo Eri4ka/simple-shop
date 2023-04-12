@@ -1,0 +1,58 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  position: relative;
+  max-width: 1200px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto 100px auto;
+}
+
+.heading {
+  &__text {
+    position: relative;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--secondary-black-color);
+    margin-bottom: 44px;
+  }
+
+  &__badges {
+    @include flex($flex-wrap: wrap);
+    gap: 68px;
+    margin-bottom: 96px;
+  }
+}
+
+.info {
+  max-width: 777px;
+
+  &__text {
+    font-size: 30px;
+    line-height: 35.8px;
+    color: var(--secondary-black-color);
+    opacity: 0.78;
+    margin-bottom: 44px;
+  }
+}
+
+.bg {
+  position: absolute;
+  transform: translate(50%, -50%);
+  filter: blur(3px);
+  z-index: -1;
+
+  &__pic1 {
+    top: 40%;
+    right: 15%;
+  }
+
+  &__pic2 {
+    top: 80%;
+    right: 0;
+  }
+
+  &__pic3 {
+    right: 15%;
+  }
+}

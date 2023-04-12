@@ -1,0 +1,23 @@
+.root {
+  margin-bottom: 30px;
+}
+
+.list {
+  display: flex;
+
+  &__crumb {
+    color: var(--primary-black-color);
+    opacity: 0.5;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    &:not(:last-child)::after {
+      content: '/';
+    }
+
+    &_active {
+      opacity: 1;
+    }
+  }
+}

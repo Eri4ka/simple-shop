@@ -1,0 +1,55 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.heading {
+  color: var(--transparent-black-color);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.select {
+  position: relative;
+
+  &__button {
+    @include flex($align-items: center);
+    color: var(--transparent-black-color);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    border: 1px solid var(--transparent-black-color);
+    border-radius: 28.5px;
+    background-color: var(--primary-bg-color);
+    padding: 5px 25px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--primary-black-color);
+      border-color: var(--primary-black-color);
+
+      &::after {
+        border-left-color: var(--primary-black-color);
+      }
+    }
+
+    &::after {
+      content: '';
+      margin-left: 6px;
+      border-top: 3px solid transparent;
+      border-left: 6px solid var(--transparent-black-color);
+      border-bottom: 3px solid transparent;
+      transition: transform 0.2s ease;
+    }
+
+    &_active {
+      &::after {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+}

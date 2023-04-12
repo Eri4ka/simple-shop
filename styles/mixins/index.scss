@@ -6,3 +6,28 @@
     src: url($font-url) format($font-format);
   }
 }
+
+@mixin flex(
+  $justify-content: false,
+  $align-items: false,
+  $flex-direction: false,
+  $flex-wrap: false
+) {
+  display: flex;
+
+  @if $justify-content {
+    justify-content: $justify-content;
+  }
+
+  @if $align-items {
+    align-items: $align-items;
+  }
+
+  @if $flex-direction {
+    flex-direction: $flex-direction;
+  }
+
+  @if $flex-wrap {
+    flex-wrap: $flex-wrap;
+  }
+}

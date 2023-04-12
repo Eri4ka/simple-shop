@@ -1,0 +1,51 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  background-color: var(--primary-white-color);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  max-width: 246px;
+  width: 100%;
+  padding: 6px 16px 9px 23px;
+  margin-bottom: 30px;
+}
+
+.content {
+  @include flex($justify-content: space-between, $align-items: center);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: var(--primary-black-color);
+    opacity: 0.11;
+    left: 40%;
+  }
+
+  &__button {
+    background-color: inherit;
+    color: var(--primary-blue-color);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+  }
+}
+
+.counter {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 27px;
+
+  &__tumbler {
+    background-color: inherit;
+    color: var(--transparent-black-color);
+  }
+
+  &__digit {
+    color: var(--primary-black-color);
+    margin: 0 10px;
+  }
+}

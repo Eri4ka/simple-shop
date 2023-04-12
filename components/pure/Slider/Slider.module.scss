@@ -1,0 +1,23 @@
+.root {
+  max-width: 1330px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto 50px auto;
+}
+
+.dots {
+  bottom: 24px !important;
+
+  &__element {
+    display: inline-flex;
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    background-color: var(--slider-dots-bg-color);
+    margin-right: 16px;
+    cursor: pointer;
+
+    &_active {
+      background-color: var(--slider-dots-active-bg-color);
+    }
+  }
+}

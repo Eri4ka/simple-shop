@@ -1,0 +1,36 @@
+@import '@styles/variables/media.scss';
+
+.bar {
+  position: absolute;
+  background-color: var(--header-sidebar-color);
+  top: 100%;
+  margin-left: calc(var(--screen-margin) * -1);
+  height: 100vh;
+  width: 300px;
+  transform: translateX(-100%);
+  margin-top: -1px;
+  transition: all 0.3s ease-in-out;
+  padding: 35px 36px;
+  display: none;
+  visibility: hidden;
+  overflow-y: scroll;
+  z-index: 100;
+
+  &_active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  &__item {
+    padding: 15px 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+
+@media (max-width: $tablet-medium) {
+  .bar {
+    display: block;
+  }
+}

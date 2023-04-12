@@ -1,0 +1,34 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  flex-grow: 1;
+}
+
+.heading {
+  @include flex($flex-wrap: wrap);
+  gap: 30px;
+  margin-bottom: 30px;
+
+  &__text {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--secondary-black-color);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  justify-items: center;
+  margin-bottom: 100px;
+
+  &__loader {
+    grid-area: 1 / 2;
+  }
+}
+
+.pagination {
+  @include flex($justify-content: center);
+}
