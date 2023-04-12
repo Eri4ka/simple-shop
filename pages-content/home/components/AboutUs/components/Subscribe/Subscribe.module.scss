@@ -13,7 +13,7 @@
   &::after {
     content: '';
     position: absolute;
-    background: url('../../../../../public/images/aboutus/bg.png') no-repeat;
+    background: url('../../../../../../public/images/aboutus/bg.png') no-repeat;
     top: 0;
     right: 0;
     max-width: 748px;
@@ -36,7 +36,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: url('../../../../../public/images/aboutus/insta.png');
+      background: url('../../../../../../public/images/aboutus/insta.png');
       width: 208px;
       height: 74px;
     }

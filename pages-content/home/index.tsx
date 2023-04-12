@@ -4,13 +4,13 @@ import useSWR from 'swr';
 import MixitIc from '@images/promo/mixit.png';
 import CosmeticPic from '@images/promo/cosmetic.png';
 import { Slider } from '@components/pure/Slider';
-import { CardBlock } from '@components/specific/CardBlock';
-import { PromoWideCard } from '@components/pure/PromoWideCard';
-import { PromoCard } from '@components/pure/PromoCard';
-import { AboutUs } from '@components/specific/AboutUs';
 import { PRODUCTS_URL } from '@constants/index';
 import { ProductsResType } from '@mytypes/index';
 
+import { CardBlock } from './components/CardBlock';
+import { AboutUs } from './components/AboutUs';
+import { PromoWideCard } from './components/CardBlock/components/PromoWideCard';
+import { PromoCard } from './components/CardBlock/components/PromoCard';
 import styles from './Home.module.scss';
 
 const discountBanner = {
