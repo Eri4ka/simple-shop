@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import Image from 'next/image';
 
 import { ProductType } from '@mytypes/index';
-import { getDiscount } from '@shared/helpers';
+import { getSalaryDiscount } from '@shared/helpers';
 import { CartContext, ContextType } from '@shared/context/CartProvider';
 
 import { BucketButton } from './components/BucketButton';
@@ -15,9 +15,10 @@ type Props = {
 
 export const ProductCard: FC<Props> = ({ product }) => {
   // Vars
-  const { id, title, price, discountPercentage, images } = product;
-  const discount = getDiscount(price, discountPercentage);
   const { multipleAddtoCartHandler } = useContext(CartContext) as ContextType;
+
+  const { id, title, price, discountPercentage, images } = product;
+  const discount = getSalaryDiscount(price, discountPercentage);
 
   // Handlers
   const addToCartHandler = (count: number) => {
