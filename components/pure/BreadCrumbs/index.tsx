@@ -5,9 +5,8 @@ import cl from 'classnames';
 
 import { clearURLQueries } from '@shared/helpers';
 
+import { Crumb } from './types';
 import styles from './BreadCrumbs.module.scss';
-
-type CrumbType = { name: string; path: string };
 
 type Props = {
   lastCrumb?: string;
@@ -18,20 +17,20 @@ export const BreadCrumbs: FC<Props> = ({ lastCrumb }) => {
   const { asPath } = useRouter();
 
   const pathWithoutQueries = clearURLQueries(asPath);
-  const [breadCrumbs, setBreadCrumbs] = useState<CrumbType[]>([]);
+  const [breadCrumbs, setBreadCrumbs] = useState<Crumb[]>([]);
 
   // Effects
   useEffect(() => {
     const buildBreadCrumbs = () => {
       const paths = pathWithoutQueries.split('/');
-      const breadCrumbs: CrumbType[] = [];
+      const breadCrumbs: Crumb[] = [];
 
-      paths.forEach((item, idx, current) => {
-        if (idx === 0) {
+      paths.forEach((item, index, current) => {
+        if (index === 0) {
           breadCrumbs.push({ name: 'Главная', path: `/` });
         } else {
-          const prevPath = idx !== 1 ? breadCrumbs[idx - 1].path : '';
-          const isLastPath = current.length === idx + 1;
+          const prevPath = index !== 1 ? breadCrumbs[index - 1].path : '';
+          const isLastPath = current.length === index + 1;
           const name = isLastPath && lastCrumb ? lastCrumb : item;
 
           breadCrumbs.push({ name, path: `${prevPath}/${item}` });
@@ -46,16 +45,15 @@ export const BreadCrumbs: FC<Props> = ({ lastCrumb }) => {
   return (
     <div className={styles.root}>
       <ul className={styles.list}>
-        {breadCrumbs.map(({ name, path }, idx) => {
+        {breadCrumbs.map((crumb) => {
           return (
             <li
-              className={cl(
-                styles.list__crumb,
-                pathWithoutQueries === path && styles.list__crumb_active
-              )}
-              key={`${idx}${name}`}
+              className={cl(styles.list__crumb, {
+                [styles.list__crumb_active]: pathWithoutQueries === crumb.path,
+              })}
+              key={crumb.name}
             >
-              <Link href={path}>{name}</Link>
+              <Link href={crumb.path}>{crumb.name}</Link>
             </li>
           );
         })}

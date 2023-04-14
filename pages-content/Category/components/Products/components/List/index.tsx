@@ -14,7 +14,7 @@ export const List: FC<Props> = ({ products, isLoading }) => {
   return (
     <div className={styles.grid}>
       {products?.map((card) => {
-        return <Card key={card.id} card={card} />;
+        return <Card key={card.id} info={card} />;
       })}
       {isLoading && (
         <div className={styles.grid__loader}>

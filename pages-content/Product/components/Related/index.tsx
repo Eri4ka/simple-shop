@@ -54,7 +54,7 @@ export const Related: FC<Props> = ({ products }) => {
         >
           {products?.map((product, idx) => (
             <SwiperSlide key={idx} className={styles.slider__slide}>
-              <Card card={product} />
+              <Card info={product} />
             </SwiperSlide>
           ))}
         </Swiper>

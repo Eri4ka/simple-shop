@@ -20,7 +20,7 @@ export const CardBlock: FC<Props> = ({ heading, data, PromoComponent }) => {
       </div>
       <div className={styles.grid}>
         {data?.map((card) => (
-          <Card key={card.id} card={card} />
+          <Card key={card.id} info={card} />
         ))}
         {PromoComponent}
       </div>
