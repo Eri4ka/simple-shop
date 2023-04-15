@@ -26,7 +26,8 @@
       "@images/*": ["public/images/*"],
       "@icons/*": ["public/icons/*"],
       "@constants/*": ["shared/services/UrlService/constants/*"],
-      "@mytypes/*": ["types/*"]
+      "@mytypes/*": ["types/*"],
+      "@context/*": ["context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

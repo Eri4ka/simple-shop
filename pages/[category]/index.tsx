@@ -1,8 +1,8 @@
 import type { NextPage, GetServerSideProps } from 'next';
 
-import { ProductsResType } from '@mytypes/index';
+import { ProductsResType } from '@mytypes/product';
 import { request } from '@shared/api';
-import Category from '@pages-content/Category';
+import { CategoryPageContent } from '@pages-content/CategoryPageContent';
 import { UrlService } from '@shared/services/UrlService';
 
 export const getServerSideProps: GetServerSideProps<{
@@ -26,7 +26,7 @@ const CategoryPage: NextPage<{ data: ProductsResType; category: string }> = ({
   data,
   category,
 }) => {
-  return <Category data={data} category={category} />;
+  return <CategoryPageContent data={data} category={category} />;
 };
 
 export default CategoryPage;

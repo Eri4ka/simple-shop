@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useContext, MouseEvent, useState, useEffect } from 'react';
 
-import { ProductType } from '@mytypes/index';
+import { ProductType } from '@mytypes/product';
 import { getSalaryDiscount } from '@shared/helpers';
-import { CartContext, ContextType } from '@shared/context/CartProvider';
+import { CartContext, ContextType } from '@context/CartManager';
 
 import styles from './Card.module.scss';
 import { CartButton } from './components/CartButton';

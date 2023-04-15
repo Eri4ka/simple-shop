@@ -1,8 +1,8 @@
 import type { NextPage, GetServerSideProps } from 'next';
 
-import { ProductType, ProductsResType } from '@mytypes/index';
+import { ProductType, ProductsResType } from '@mytypes/product';
 import { request } from '@shared/api';
-import { Product } from '@pages-content/Product';
+import { ProductPageContent } from '@pages-content/ProductPageContent';
 import { UrlService } from '@shared/services/UrlService';
 
 export const getServerSideProps: GetServerSideProps<{
@@ -38,7 +38,7 @@ type Props = {
 };
 
 const ProductPage: NextPage<Props> = ({ data, related }) => {
-  return <Product product={data} related={related} />;
+  return <ProductPageContent product={data} related={related} />;
 };
 
 export default ProductPage;
