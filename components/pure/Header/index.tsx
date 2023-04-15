@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Logo from '@public/images/logo.png';
 
@@ -8,7 +9,6 @@ import { UserAccount } from './components/UserAccount';
 import { Catalog } from './components/Catalog';
 
 import styles from './Header.module.scss';
-import Link from 'next/link';
 
 export const Header = () => {
   return (
@@ -26,10 +26,12 @@ export const Header = () => {
               <UserAccount />
               <UserCart />
             </div>
-            <div className={styles.contacts}>
+            <address className={styles.contacts}>
               <span className={styles.contacts__text}>Есть вопросы?</span>
-              <span className={styles.contacts__phone}>+7 700 344 32 55</span>
-            </div>
+              <a href='tel:+7 707 602 5959' className={styles.contacts__phone}>
+                +7 700 344 32 55
+              </a>
+            </address>
           </div>
         </div>
       </div>

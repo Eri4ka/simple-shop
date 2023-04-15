@@ -2,8 +2,8 @@ import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
 
 import { request } from '@shared/api';
-import { CartProvider } from '@shared/context/CartProvider';
-import { Layout } from '@pages-content/Layout';
+import { CartManager } from '@context/CartManager';
+import { Layout } from '@components/pure/Layout';
 import '@styles/index.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -13,11 +13,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         fetcher: (resource) => request(resource),
       }}
     >
-      <CartProvider>
+      <CartManager>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </CartProvider>
+      </CartManager>
     </SWRConfig>
   );
 };

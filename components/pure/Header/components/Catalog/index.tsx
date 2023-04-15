@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import cl from 'classnames';
 
-import { CATEGORIES_URL } from '@constants/index';
+import { UrlService } from '@shared/services/UrlService';
 
 import { DropDown } from './components/DropDown';
 import { SideBar } from './components/SideBar';
@@ -11,7 +11,7 @@ import styles from './Catalog.module.scss';
 export const Catalog = () => {
   // Vars
   const [openSideBar, setOpenSideBar] = useState(false);
-  const { data } = useSWR(CATEGORIES_URL);
+  const { data } = useSWR(UrlService.getCategories());
 
   // Handlers
   const toggleSiderBarHandler = () => {
@@ -33,7 +33,7 @@ export const Catalog = () => {
         <li className={styles.item}>Публичная оферта</li>
       </ul>
       <div
-        className={cl(styles.toggle, openSideBar && styles.toggle_active)}
+        className={cl(styles.toggle, { [styles.toggle_active]: openSideBar })}
         onClick={toggleSiderBarHandler}
       >
         <div className={styles.toggle__elem}></div>
