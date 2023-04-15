@@ -99,6 +99,10 @@ select {
   font: inherit;
 }
 
+address {
+  font-style: normal;
+}
+
 /* Избавляемся от стандартных разрывов и границ в таблице */
 table {
   border-spacing: 0;

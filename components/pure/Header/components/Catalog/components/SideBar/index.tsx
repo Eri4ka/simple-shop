@@ -11,7 +11,7 @@ type Props = {
 
 export const SideBar: FC<Props> = ({ isActive, items }) => {
   return (
-    <div className={cl(styles.bar, isActive && styles.bar_active)}>
+    <div className={cl(styles.bar, { [styles.bar_active]: isActive })}>
       <ul>
         <SubNav items={items}>
           <li className={styles.bar__item}>Каталог</li>

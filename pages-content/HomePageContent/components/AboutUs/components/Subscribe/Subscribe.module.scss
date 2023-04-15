@@ -1,0 +1,101 @@
+@import '@styles/variables/media.scss';
+@import '@styles/mixins/index.scss';
+
+.root {
+  @include flex($align-items: center, $flex-wrap: wrap);
+  position: relative;
+  background-color: var(--ligth-pink-color);
+  border-radius: 57px;
+  padding: 68px 103px 87px 103px;
+  height: auto;
+  gap: 15px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url('../../../../../../public/images/aboutus/bg.png') no-repeat;
+    top: 0;
+    right: 0;
+    max-width: 748px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: inherit;
+  }
+}
+
+.info {
+  position: relative;
+  flex: 1;
+
+  &__text {
+    position: relative;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--light-black-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      background: url('../../../../../../public/images/aboutus/insta.png');
+      width: 208px;
+      height: 74px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.button {
+  background-color: var(--secondary-blue-color);
+  border-radius: 13px;
+  padding: 20px 47px;
+  max-height: 75px;
+  max-width: 313px;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+
+  &__text {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: var(--primary-white-color);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: $tablet) {
+  .root {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .root {
+    padding: 25px 35px;
+  }
+
+  .info {
+    &__text {
+      font-size: 30px;
+    }
+  }
+
+  .button {
+    padding: 15px 30px;
+
+    &__text {
+      font-size: 25px;
+    }
+  }
+}

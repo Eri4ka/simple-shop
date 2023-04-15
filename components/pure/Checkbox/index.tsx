@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ChangeEvent } from 'react';
 
 import styles from './Checkbox.module.scss';
 
@@ -6,18 +6,22 @@ type Props = {
   label: string;
   total: number | undefined;
   activeValues: string[];
-  onChange: (e: React.ChangeEvent<HTMLInputElement>, value: string) => void;
+  toggleHandler: (labelValue: boolean, label: Props['label']) => void;
 };
 
 export const Checkbox: FC<Props> = ({
   label,
   total,
-  onChange,
+  toggleHandler,
   activeValues,
-  ...props
 }) => {
   // Vars
   const isChecked = activeValues.includes(label);
+
+  // Handlers
+  const inputToggleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    toggleHandler(event.target.checked, label);
+  };
 
   return (
     <div className={styles.root}>
@@ -26,8 +30,7 @@ export const Checkbox: FC<Props> = ({
         className={styles.checkbox}
         type='checkbox'
         checked={isChecked}
-        onChange={(e) => onChange(e, label)}
-        {...props}
+        onChange={inputToggleHandler}
       />
       <label id='hint' htmlFor={label} className={styles.checkbox__label}>
         {label}

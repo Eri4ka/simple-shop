@@ -1,15 +1,17 @@
 import type { NextPage, GetServerSideProps } from 'next';
 
-import { PRODUCTS_CATEGORY_URL } from '@constants/index';
-import { ProductsResType } from '@mytypes/index';
+import { ProductsResType } from '@mytypes/product';
 import { request } from '@shared/api';
-import Category from '@pages-content/Category';
+import { CategoryPageContent } from '@pages-content/CategoryPageContent';
+import { UrlService } from '@shared/services/UrlService';
 
 export const getServerSideProps: GetServerSideProps<{
   data: ProductsResType;
 }> = async ({ query }) => {
   const { category } = query;
-  const data = await request(`${PRODUCTS_CATEGORY_URL}${category}?limit=12`);
+  const data = await request(
+    UrlService.getCategoryProducts({ category, limit: '12' })
+  );
 
   if (data.total === 0) {
     return {
@@ -24,7 +26,7 @@ const CategoryPage: NextPage<{ data: ProductsResType; category: string }> = ({
   data,
   category,
 }) => {
-  return <Category data={data} category={category} />;
+  return <CategoryPageContent data={data} category={category} />;
 };
 
 export default CategoryPage;

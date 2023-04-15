@@ -1,40 +1,44 @@
 import { FC, useState } from 'react';
 import cl from 'classnames';
 
+import { NEXT_ELEMENT, PREV_ELEMENT } from './constants';
 import styles from './Pagination.module.scss';
 
 type Props = {
   productsTotal?: number;
   productsOnPage: number;
-  onPageClick: (page: number) => void;
+  changePageNandler: (page: number) => void;
 };
 
 export const Pagination: FC<Props> = ({
   productsTotal,
   productsOnPage,
-  onPageClick,
+  changePageNandler,
 }) => {
   // Vars
   const [activePage, setActivePage] = useState(1);
   const pagesCount = productsTotal
     ? Math.ceil(productsTotal / productsOnPage)
     : 1;
+
   const pages = Array.from(Array(pagesCount).keys());
+  const isPrevButtonDisabled = activePage === 1;
+  const isNextButtonDisabled = activePage === pagesCount;
 
   // Handlers
   const clickOnPageHandler = (currentPage: number) => {
     setActivePage(currentPage);
-    onPageClick(currentPage - 1);
+    changePageNandler(currentPage - 1);
   };
 
   const clickOnPrevPageHandler = () => {
     setActivePage((current) => current - 1);
-    onPageClick(activePage - 2);
+    changePageNandler(activePage - 2);
   };
 
   const clickOnNextPageHandler = () => {
     setActivePage((current) => current + 1);
-    onPageClick(activePage);
+    changePageNandler(activePage);
   };
 
   return (
@@ -42,20 +46,19 @@ export const Pagination: FC<Props> = ({
       <button
         className={styles.button}
         onClick={clickOnPrevPageHandler}
-        disabled={activePage === 1}
+        disabled={isPrevButtonDisabled}
       >
-        {'<'}
+        {PREV_ELEMENT}
       </button>
       <ul className={styles.list}>
-        {pages.map((item) => {
-          const currentPage = item + 1;
+        {pages.map((page) => {
+          const currentPage = page + 1;
           return (
             <li
-              className={cl(
-                styles.list__page,
-                activePage === currentPage && styles.list__page_active
-              )}
-              key={item}
+              className={cl(styles.list__page, {
+                [styles.list__page_active]: activePage === currentPage,
+              })}
+              key={page}
               onClick={() => clickOnPageHandler(currentPage)}
             >
               {currentPage}
@@ -66,9 +69,9 @@ export const Pagination: FC<Props> = ({
       <button
         className={styles.button}
         onClick={clickOnNextPageHandler}
-        disabled={activePage === pagesCount}
+        disabled={isNextButtonDisabled}
       >
-        {'>'}
+        {NEXT_ELEMENT}
       </button>
     </div>
   );

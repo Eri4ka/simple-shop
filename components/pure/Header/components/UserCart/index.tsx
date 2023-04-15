@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { CartContext, ContextType } from '@shared/context/CartProvider';
+import { CartContext, ContextType } from '@context/CartManager';
 import CartIc from '@icons/header/user/cart.svg';
 
 import { User } from '../User';
