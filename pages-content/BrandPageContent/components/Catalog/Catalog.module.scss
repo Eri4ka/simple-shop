@@ -1,0 +1,28 @@
+.root {
+  margin-bottom: 50px;
+}
+
+.heading {
+  color: var(--primary-black-color);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+  margin-bottom: 25px;
+}
+
+.list {
+  display: flex;
+  gap: 10px;
+
+  &__item {
+    color: var(--transparent-black-color);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+
+    &_active {
+      color: var(--primary-black-color);
+      font-weight: 700;
+    }
+  }
+}
