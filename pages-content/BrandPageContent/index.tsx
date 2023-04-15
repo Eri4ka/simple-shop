@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { TBrandsByAlphabet } from '@mytypes/brands';
 
 import { Catalog } from './components/Catalog';
+import { CharBrands } from './components/CharBrands';
 import styles from './BrandPageContent.module.scss';
 
 type Props = {
@@ -10,15 +11,13 @@ type Props = {
 };
 
 export const BrandPageContent: FC<Props> = ({ data }) => {
-  // console.log(data);
-  const alphabetList = data.map((brand) => brand.char);
-
-  console.log(alphabetList);
-
   return (
     <section className={styles.root}>
       <div className={styles.wrapper}>
-        <Catalog data={alphabetList} />
+        <Catalog data={data} />
+        {data.map((brand) => (
+          <CharBrands key={brand.char} data={brand} />
+        ))}
       </div>
     </section>
   );
