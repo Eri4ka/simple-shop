@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-import { API_URL } from '@constants/index';
+import { API_URL } from '@shared/services/UrlService/constants/index';
 
 const instance = axios.create({
   baseURL: API_URL,

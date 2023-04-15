@@ -19,12 +19,7 @@ export const Section: FC<Props> = ({ name, heading, values }) => {
   const paramsArr = params?.split(', ') ?? [];
 
   // Handlers
-  const setActiveValueHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    const checked = e.target.checked;
-
+  const setActiveValueHandler = (checked: boolean, value: string) => {
     if (checked) {
       const uniqueCurrentParams = Array.from(
         new Set([...paramsArr, value])
@@ -62,7 +57,7 @@ export const Section: FC<Props> = ({ name, heading, values }) => {
             label={value}
             activeValues={paramsArr}
             total={total}
-            onChange={setActiveValueHandler}
+            toggleHandler={setActiveValueHandler}
           />
         ))}
       </div>

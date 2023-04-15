@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import MixitIc from '@images/promo/mixit.png';
 import CosmeticPic from '@images/promo/cosmetic.png';
 import { Slider } from '@components/pure/Slider';
-import { PRODUCTS_URL } from '@constants/index';
+import { UrlService } from '@shared/services/UrlService';
 import { ProductsResType } from '@mytypes/index';
 
 import { CardBlock } from './components/CardBlock';
@@ -27,13 +27,13 @@ const recommendationBanner = {
 export const HomePageContent: FC = () => {
   // Vars
   const { data: recommendations } = useSWR<ProductsResType>(
-    `${PRODUCTS_URL}?limit=6`
+    UrlService.getProducts({ limit: '6' })
   );
   const { data: novelties } = useSWR<ProductsResType>(
-    `${PRODUCTS_URL}?limit=4&skip=30`
+    UrlService.getProducts({ limit: '6', skip: '30' })
   );
   const { data: discounts } = useSWR<ProductsResType>(
-    `${PRODUCTS_URL}?limit=7&skip=50`
+    UrlService.getProducts({ limit: '7', skip: '50' })
   );
   const { logoSrc, discountText, text } = discountBanner;
   const { imageSrc, text: recomText } = recommendationBanner;

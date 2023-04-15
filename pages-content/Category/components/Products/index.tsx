@@ -4,7 +4,7 @@ import useSWR from 'swr';
 
 import { Pagination } from '@components/specific/Pagination';
 import { BreadCrumbs } from '@components/pure/BreadCrumbs';
-import { PRODUCTS_CATEGORY_URL } from '@constants/index';
+import { UrlService } from '@shared/services/UrlService';
 import { ProductsResType, ProductType } from '@mytypes/index';
 
 import { Sorting } from './components/Sorting';
@@ -30,7 +30,11 @@ export const Products: FC<Props> = ({ data, category }) => {
   // Vars
   const [skip, setSkip] = useState(0);
   const { data: initialProducts, isLoading } = useSWR<ProductsResType>(
-    `${PRODUCTS_CATEGORY_URL}${category}?limit=${PRODUCTS_ON_PAGE}&skip=${skip}`,
+    UrlService.getCategoryProducts({
+      category,
+      limit: `${PRODUCTS_ON_PAGE}`,
+      skip: `${skip}`,
+    }),
     { fallbackData: data }
   );
   const [filteredProducts, setFilteredProducts] = useState<
@@ -102,7 +106,7 @@ export const Products: FC<Props> = ({ data, category }) => {
         <Pagination
           productsTotal={initialProducts?.total}
           productsOnPage={PRODUCTS_ON_PAGE}
-          onPageClick={changeSkipHandler}
+          changePageNandler={changeSkipHandler}
         />
       </div>
     </article>

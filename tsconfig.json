@@ -25,7 +25,7 @@
       "@public/*": ["public/*"],
       "@images/*": ["public/images/*"],
       "@icons/*": ["public/icons/*"],
-      "@constants/*": ["constants/*"],
+      "@constants/*": ["shared/services/UrlService/constants/*"],
       "@mytypes/*": ["types/*"]
     }
   },

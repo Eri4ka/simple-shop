@@ -1,6 +1,6 @@
 import { createContext, FC, ReactNode, useState, useEffect } from 'react';
 
-import { LocalStorageService } from '@shared/services/localStorage';
+import { LocalStorageService } from '@shared/services/LocalStorageService';
 
 type Props = {
   children: ReactNode;

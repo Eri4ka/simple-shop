@@ -32,8 +32,8 @@ export const DropDown: FC<Props> = ({ children, items }) => {
       {isOpen && (
         <div className={styles.menu}>
           <ul className={styles.menu__list}>
-            {items?.map((item, idx) => (
-              <li key={idx} className={styles.menu__item}>
+            {items?.map((item, index) => (
+              <li key={index} className={styles.menu__item}>
                 <Link href={`/${item}`}>{item}</Link>
               </li>
             ))}

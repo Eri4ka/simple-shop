@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
-import { PRODUCTS_CATEGORY_URL } from '@constants/index';
 import { FilterType, ProductType, ProductsResType } from '@mytypes/index';
+import { UrlService } from '@shared/services/UrlService';
 
 import { Section } from './components/Section';
 import styles from './Filter.module.scss';
@@ -14,9 +14,10 @@ type Props = {
 export const Filter: FC<Props> = ({ category }) => {
   // Vars
   const { data } = useSWR<ProductsResType>(
-    `${PRODUCTS_CATEGORY_URL}${category}`
+    UrlService.getCategoryProducts({ category })
   );
   const [brands, setBrands] = useState<FilterType[]>([]);
+
   const filters = [{ id: 1, name: 'brand', heading: 'Брэнд', values: brands }];
 
   // Effects
