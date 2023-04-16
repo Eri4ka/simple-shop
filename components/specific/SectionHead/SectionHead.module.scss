@@ -1,0 +1,17 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  @include flex($align-items: center, $justify-content: center);
+  max-height: 180px;
+  height: 17vh;
+  background: linear-gradient(89.85deg, #f4f4f4 -1.06%, #e4e4e4 105.44%);
+}
+
+.text {
+  text-transform: uppercase;
+  color: var(--secondary-black-color);
+  opacity: 0.75;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 56px;
+}
