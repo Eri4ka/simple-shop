@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import useSWR from 'swr';
 import cl from 'classnames';
@@ -25,7 +26,11 @@ export const Catalog = () => {
           <li className={styles.item}>Каталог</li>
         </DropDown>
         <li className={styles.item}>Популярное</li>
-        <li className={styles.item}>Бренды</li>
+        <li className={styles.item}>
+          <Link href='/brands' className={styles.item__link}>
+            Бренды
+          </Link>
+        </li>
         <li className={styles.item}>Акции</li>
         <li className={styles.item}>Контакты</li>
         <li className={styles.item}>Доставка и оплата</li>

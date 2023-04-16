@@ -30,10 +30,19 @@
     font-size: 16px;
     line-height: 19px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-    padding: 15px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-transform: uppercase;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--secondary-black-color);
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 15px 0;
   }
 }
