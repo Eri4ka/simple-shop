@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
+import NextNProgress from 'nextjs-progressbar';
 
 import { request } from '@shared/api';
 import { CartManager } from '@context/CartManager';
@@ -15,6 +16,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     >
       <CartManager>
         <Layout>
+          <NextNProgress
+            color='#fe73a4'
+            showOnShallow={false}
+            options={{ showSpinner: false }}
+          />
           <Component {...pageProps} />
         </Layout>
       </CartManager>
