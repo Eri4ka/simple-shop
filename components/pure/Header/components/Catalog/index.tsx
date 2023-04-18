@@ -35,7 +35,11 @@ export const Catalog = () => {
         <li className={styles.item}>Контакты</li>
         <li className={styles.item}>Доставка и оплата</li>
         <li className={styles.item}>Помощь</li>
-        <li className={styles.item}>Публичная оферта</li>
+        <li className={styles.item}>
+          <Link href='/offer' className={styles.item__link}>
+            Публичная оферта
+          </Link>
+        </li>
       </ul>
       <div
         className={cl(styles.toggle, { [styles.toggle_active]: openSideBar })}

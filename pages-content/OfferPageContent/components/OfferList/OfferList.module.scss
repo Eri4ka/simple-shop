@@ -1,0 +1,20 @@
+.list {
+  counter-reset: li;
+  font-size: 18px;
+
+  &__item {
+    text-transform: initial;
+    font-weight: initial;
+    margin-top: 10px;
+
+    &::before {
+      counter-increment: li;
+      content: counters(li, '.') '. ';
+    }
+  }
+
+  &__head {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
