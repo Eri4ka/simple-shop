@@ -1,0 +1,40 @@
+@import '@styles/mixins/index.scss';
+
+.root:not(:last-child) {
+  margin-bottom: 6vh;
+}
+
+.char {
+  color: var(--transparent-black-color);
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 72px;
+  margin-bottom: 6vh;
+}
+
+.grid {
+  @include flex($justify-content: center, $flex-wrap: wrap);
+  gap: 20px;
+
+  &__item {
+    max-height: 251px;
+    height: 28vh;
+    background-color: var(--card-bg-color);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    flex-basis: 590px;
+  }
+
+  &__link {
+    @include flex($justify-content: center, $align-items: center);
+    height: 100%;
+  }
+
+  &__brand {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    font-size: calc(20px + 20 * (100vw / 1440));
+  }
+}

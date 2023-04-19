@@ -14,7 +14,7 @@ export const UrlService: Url = {
     return `${this.baseUrl}${CATEGORIES_URL}`;
   },
 
-  getProducts: function ({ limit = '', skip = '' }) {
+  getProducts: function ({ limit = 0, skip = '' }) {
     return `${this.baseUrl}${PRODUCTS_URL}?limit=${limit}&skip=${skip}`;
   },
 

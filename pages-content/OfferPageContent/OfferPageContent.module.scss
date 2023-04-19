@@ -1,0 +1,10 @@
+.root {
+  padding-bottom: 80px;
+}
+
+.content {
+  max-width: 1200px;
+  width: calc(100vw - var(--screen-margin));
+  margin: 0 auto;
+  padding-top: 50px;
+}

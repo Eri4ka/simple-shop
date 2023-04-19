@@ -1,0 +1,24 @@
+.item {
+  color: var(--transparent-black-color);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  transition: color 0.2s ease;
+
+  &_disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--primary-black-color);
+  }
+}
+
+.button {
+  background-color: var(--primary-white-color);
+
+  &:disabled {
+    cursor: default;
+  }
+}

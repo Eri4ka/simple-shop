@@ -29,6 +29,12 @@
     background-color: rgba(0, 0, 0, 0.04);
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.09);
   }
+
+  &__link {
+    @include flex($justify-content: center, $align-items: center);
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .toggle {

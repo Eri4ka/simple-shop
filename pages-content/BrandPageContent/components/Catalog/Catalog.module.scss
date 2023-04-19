@@ -1,0 +1,20 @@
+@import '@styles/mixins/index.scss';
+
+.root {
+  margin-bottom: 50px;
+  position: sticky;
+  top: 0;
+}
+
+.heading {
+  color: var(--primary-black-color);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+  margin-bottom: 25px;
+}
+
+.list {
+  @include flex($flex-wrap: wrap);
+  gap: 10px;
+}
