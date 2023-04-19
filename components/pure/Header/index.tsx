@@ -16,11 +16,11 @@ export const Header = () => {
       <div className={styles.top}>
         <div className={styles.top__wrapper}>
           <div className={styles.top__content}>
-            <Link href='/'>
-              <div className={styles.logo}>
+            <div className={styles.logo}>
+              <Link href='/'>
                 <Image src={Logo} alt='logo' priority />
-              </div>
-            </Link>
+              </Link>
+            </div>
             <Search />
             <div className={styles.user}>
               <UserAccount />
