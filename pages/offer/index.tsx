@@ -1,5 +1,6 @@
-import { OfferPageContent } from '@pages-content/OfferPageContent';
 import { NextPage } from 'next';
+
+import { OfferPageContent } from '@pages-content/OfferPageContent';
 
 const OfferPage: NextPage = () => {
   return <OfferPageContent />;
