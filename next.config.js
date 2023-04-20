@@ -31,16 +31,6 @@ const nextConfig = {
       },
     ],
   },
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/': { page: '/' },
-      '/offer': { page: '/offer' },
-      '/contacts': { page: '/contacts' },
-    };
-  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
