@@ -3,6 +3,7 @@ import {
   CATEGORIES_URL,
   PRODUCTS_URL,
   PRODUCTS_CATEGORY_URL,
+  PRODUCTS_SEARCH_URL,
 } from './constants';
 
 import { Url } from './types';
@@ -24,5 +25,11 @@ export const UrlService: Url = {
 
   getCategoryProducts: function ({ category, limit = '0', skip = '' }) {
     return `${this.baseUrl}${PRODUCTS_CATEGORY_URL}${category}?limit=${limit}&skip=${skip}`;
+  },
+
+  getSearchProducts: function ({ value, limit = '0', skip = '' }) {
+    return `${this.baseUrl}${PRODUCTS_SEARCH_URL}?${
+      value ? 'q=' + value : ''
+    }&limit=${limit}&skip=${skip}`;
   },
 };

@@ -32,7 +32,11 @@ export const Catalog = () => {
           </Link>
         </li>
         <li className={styles.item}>Акции</li>
-        <li className={styles.item}>Контакты</li>
+        <li className={styles.item}>
+          <Link href='/contacts' className={styles.item__link}>
+            Контакты
+          </Link>
+        </li>
         <li className={styles.item}>Доставка и оплата</li>
         <li className={styles.item}>Помощь</li>
         <li className={styles.item}>
