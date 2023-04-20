@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# next.js
+/.next/
+next-env.d.ts
+
+# production
+/build
+
+# debug
+npm-debug.log*
+
+# typescript
+*.tsbuildinfo
+
+# ide
+.vscode
